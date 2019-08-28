@@ -1,0 +1,11 @@
+.UserProfile-container {
+  width: 95%;
+  color: #1ed761;
+}
+
+.UserProfile-image {
+  width: 20%;
+  float: left;
+  border: solid #1ed761;
+  border-radius: 5px
+}
