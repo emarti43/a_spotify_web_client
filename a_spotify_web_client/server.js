@@ -3,7 +3,7 @@ const path = require('path');
 const request = require('request');
 
 const cors = require('cors');
-const querystring = require('querystring');
+const querystring = require('query-string');
 const cookieParser = require('cookie-parser');
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -66,7 +66,7 @@ app.get('/callback', function(req, res) {
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect('/#' +
+    res.redirect('/?' +
       querystring.stringify({
         error: 'state_mismatch'
       }));
@@ -103,13 +103,13 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
+        res.redirect('/?' +
           querystring.stringify({
             access_token: accessToken,
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('/#' +
+        res.redirect('/?' +
           querystring.stringify({
             error: 'invalid_token'
           }));
