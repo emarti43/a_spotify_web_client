@@ -1,11 +1,20 @@
 .UserProfile-container {
-  width: 95%;
+  overflow: auto;
+  margin: 10px;
+}
+
+.UserProfile-image-container {
+  width: 25%;
+  float: left;
+}
+
+.UserProfile-content {
   color: #1ed761;
+  float: left;
+  overflow: auto;
 }
 
 .UserProfile-image {
-  width: 20%;
-  float: left;
   border: solid #1ed761;
-  border-radius: 5px
+  border-radius: 5px;
 }

@@ -1,0 +1,22 @@
+.Playlists-container {
+  margin: 10px;
+  overflow: auto;
+}
+
+.Playlist-container {
+  overflow: auto;
+}
+
+.Playlist-image-container {
+  float: left;
+  max-height: 100%;
+  width: 25%;
+}
+
+.Playlist-image {
+  width: 95%;
+}
+
+.Playlist-content {
+  float: left;
+}
