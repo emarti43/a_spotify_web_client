@@ -5,18 +5,29 @@
 
 .Playlist-container {
   overflow: auto;
+  margin: 1%;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+}
+
+.Playlist-container:hover {
+  background-color: black;
 }
 
 .Playlist-image-container {
   float: left;
   max-height: 100%;
   width: 25%;
+  margin: 5px;
 }
 
 .Playlist-image {
-  width: 95%;
+  width: 100%;
+  border-radius: 10px;
+  margin: 1px;
 }
 
 .Playlist-content {
+  margin-left: 2%;
   float: left;
 }

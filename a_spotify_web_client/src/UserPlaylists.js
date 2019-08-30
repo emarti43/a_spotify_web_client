@@ -10,7 +10,7 @@ export default class UserPlaylists extends React.Component {
         <img className="Playlist-image" src={playlist.images[0].url || "null"} alt={`playlist for ${playlist.name}`}/>
       </div>
       <div className="Playlist-content">
-        <h6> {playlist.name}</h6>
+        <h5> {playlist.name}</h5>
       </div>
     </div>);
     return(
