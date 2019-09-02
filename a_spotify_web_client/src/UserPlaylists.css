@@ -1,6 +1,7 @@
 .Playlists-container {
-  margin: 10px;
+  margin: auto;
   overflow: auto;
+  width: 70%;
 }
 
 .Playlist-container {
@@ -8,6 +9,7 @@
   margin: 1%;
   border-radius: 10px;
   transition: background-color 0.5s;
+  cursor: pointer;
 }
 
 .Playlist-container:hover {
