@@ -1,6 +1,7 @@
 .UserProfile-container {
   overflow: auto;
-  margin: 10px;
+  margin: auto;
+  width: 70%;
 }
 
 .UserProfile-image-container {
