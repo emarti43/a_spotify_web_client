@@ -37,6 +37,12 @@
 
 .Track-container {
   text-align: left;
+  width: 100%;
+}
+
+.Tracks-container {
+  width: 100%;
+  overflow: hidden;
 }
 
 .Track-image {
@@ -48,6 +54,12 @@
   float:left;
   width: 73%;
 }
+
+.Track-container {
+  overflow: hidden;
+  width: 100%;
+}
+
 img {
   width: 100%;
 }

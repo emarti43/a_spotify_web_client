@@ -60,7 +60,7 @@ export default class UserPlaylist extends React.Component {
         <div className="Playlist-content">
           <h3> {this.props.playlist.name}</h3>
           {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
-          {this.state.playlistInfo ? <div> {tracks} </div>: ''}
+          {this.state.playlistInfo ? <div className="Track-container"> {tracks} </div>: ''}
         </div>
       </div>
     </React.Fragment>
