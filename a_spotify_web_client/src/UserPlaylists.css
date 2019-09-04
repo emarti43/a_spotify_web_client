@@ -30,6 +30,11 @@
 }
 
 .Playlist-content {
-  margin-left: 2%;
+  margin-left: 1%;
   float: left;
+  width: 70%;
+}
+
+.Tracks-container {
+  text-align: left;
 }

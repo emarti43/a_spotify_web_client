@@ -34,10 +34,9 @@ export default class UserPlaylist extends React.Component {
 
   render() {
     function Track(props) {
-      console.log(props);
         return (
-          <div>
-            <h6>{props.track.name}</h6>
+          <div className='Tracks-container'>
+            {props.track.name}
             <p>
               {props.track.artists[0].name}
             </p>
@@ -49,12 +48,12 @@ export default class UserPlaylist extends React.Component {
     }
     return (
     <React.Fragment>
-      <div className="Playlist-container">
+      <div className="Playlist-container" onClick={this.fetchInfo}>
         <div className="Playlist-image-container">
           <img className="Playlist-image" src={this.props.playlist.images[0].url || "null"} alt={`playlist for ${this.props.playlist.name}`}/>
         </div>
-        <div className="Playlist-content"  onClick={this.fetchInfo}>
-          <h5> {this.props.playlist.name}</h5>
+        <div className="Playlist-content">
+          <h3> {this.props.playlist.name}</h3>
           {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
           {this.state.playlistInfo ? <div> {tracks} </div>: ''}
         </div>
