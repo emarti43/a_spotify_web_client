@@ -1,7 +1,7 @@
 .Playlists-container {
   margin: auto;
   overflow: auto;
-  width: 70%;
+  width: 80%;
 }
 
 .Playlist-container {
@@ -35,6 +35,19 @@
   width: 70%;
 }
 
-.Tracks-container {
+.Track-container {
   text-align: left;
+}
+
+.Track-image {
+  float:left;
+  width: 23%;
+}
+
+.Track-content {
+  float:left;
+  width: 73%;
+}
+img {
+  width: 100%;
 }

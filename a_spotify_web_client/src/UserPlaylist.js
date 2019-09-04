@@ -5,9 +5,9 @@ export default class UserPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.fetchInfo = this.fetchInfo.bind(this);
+    this.displayInfo = this.displayInfo.bind(this);
   }
-  fetchInfo(event) {
+  displayInfo(event) {
     if (this.state.playlistInfo) {
       event.preventDefault();
     } else {
@@ -35,11 +35,16 @@ export default class UserPlaylist extends React.Component {
   render() {
     function Track(props) {
         return (
-          <div className='Tracks-container'>
-            {props.track.name}
-            <p>
-              {props.track.artists[0].name}
-            </p>
+          <div className='Track-container'>
+            <div className='Track-image'>
+              <img src={props.track.album.images[0].url}/>
+            </div>
+            <div className='Track-content'>
+              {props.track.name}
+              <p>
+                {props.track.artists[0].name}
+              </p>
+            </div>
           </div>
         );
     }
@@ -48,7 +53,7 @@ export default class UserPlaylist extends React.Component {
     }
     return (
     <React.Fragment>
-      <div className="Playlist-container" onClick={this.fetchInfo}>
+      <div className="Playlist-container" style={ this.state.playlistInfo ? {backgroundColor: "black"} : {}} onClick={this.displayInfo}>
         <div className="Playlist-image-container">
           <img className="Playlist-image" src={this.props.playlist.images[0].url || "null"} alt={`playlist for ${this.props.playlist.name}`}/>
         </div>
