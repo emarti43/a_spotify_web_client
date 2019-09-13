@@ -1,8 +1,14 @@
 .App {
   text-align: center;
+  background: #000000;
+  background-image: url("website-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 .container {
-  width: 87%;
+  margin: auto;
+  background: rgba(0, 0, 0, .5)
 }
 
 .App-logo {
@@ -11,9 +17,17 @@
   pointer-events: none;
 }
 
+.Spotify-logo {
+  animation: 1s flash ease-in;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+  width: 10%;
+}
+
+
 body {
   align-items: center;
-  background-color: #282c34;
+  background-color: #000000;
   color: white;
   display: flex;
   flex-direction: column;
@@ -22,15 +36,38 @@ body {
   min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  color: #1dfabb;
+}
+a {
+  text-decoration: underline;
+}
+a:visited {
+  color: pink;
 }
 
-@keyframes App-logo-spin {
+.login-content {
+  animation: 0.5s flash-into-position ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes flash {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flash-into-position {
+  from {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
   }
 }

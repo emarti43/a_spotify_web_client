@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './spotify-icon.png';
 import './App.css';
 import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
@@ -58,12 +58,25 @@ export default class App extends React.Component {
   }
 
   render () {
+    function LoginContent(props) {
+      return(
+        <h2 className="login-content">
+          Please Login <a className="login-button" href="/login"> Here</a>
+        </h2>
+      );
+    }
+    let content =
+    <div>
+      {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : <LoginContent/>}
+      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists}/> : ''}
+    </div>;
 
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
-        {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : ''}
-        {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists}/> : ''}
+        <div className="container">
+          <img src={logo} className="Spotify-logo" alt="logo" />
+          {content}
+        </div>
       </div>
     );
   }

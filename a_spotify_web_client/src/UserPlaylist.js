@@ -37,7 +37,7 @@ export default class UserPlaylist extends React.Component {
         return (
           <div className='Track-container'>
             <div className='Track-image'>
-              <img src={props.track.album.images[0].url}/>
+              <img classsrc={props.track.album.images[0].url}/>
             </div>
             <div className='Track-content'>
               {props.track.name}
