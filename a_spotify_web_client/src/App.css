@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   background: #000000;
   background-image: url("website-background.jpg");
   background-repeat: no-repeat;
@@ -22,8 +21,12 @@
   animation-fill-mode: forwards;
   pointer-events: none;
   width: 10%;
+  text-align: center;
 }
 
+.center-text {
+  text-align: center;
+}
 
 body {
   align-items: center;
@@ -31,7 +34,6 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: 100vh;
 }

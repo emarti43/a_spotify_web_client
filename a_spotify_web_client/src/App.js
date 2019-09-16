@@ -60,9 +60,11 @@ export default class App extends React.Component {
   render () {
     function LoginContent(props) {
       return(
-        <h2 className="login-content">
-          Please Login <a className="login-button" href="/login"> Here</a>
-        </h2>
+        <div className="center-text">
+          <h2 className="login-content">
+            Please Login <a className="login-button" href="/login"> Here</a>
+          </h2>
+        </div>
       );
     }
     let content =
@@ -74,7 +76,10 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <div className="container">
-          <img src={logo} className="Spotify-logo" alt="logo" />
+          <div className="center-text">
+            <img src={logo} className="Spotify-logo" alt="logo" />
+          </div>
+
           {content}
         </div>
       </div>

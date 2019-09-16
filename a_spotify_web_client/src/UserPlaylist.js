@@ -33,23 +33,23 @@ export default class UserPlaylist extends React.Component {
   }
 
   render() {
-    function Track(props) {
+    function Track({track}) {
         return (
-          <div className='Track-container'>
-            <div className='Track-image'>
-              <img classsrc={props.track.album.images[0].url}/>
+          <div className='track-container'>
+            <div className='track-image'>
+              <img src={track.album.images[0].url} alt="track"/>
             </div>
-            <div className='Track-content'>
-              {props.track.name}
-              <p>
-                {props.track.artists[0].name}
-              </p>
+            <div className='track-content'>
+                <h3 className='track-title'>{track.name}</h3>
+              <div className='track-artists'>
+                {track.artists[0].name}
+              </div>
             </div>
           </div>
         );
     }
     if (this.state.playlistInfo) {
-      var tracks = this.state.playlistInfo.tracks.items.map(item => <Track track={item.track}/> );
+      var tracks = this.state.playlistInfo.tracks.items.map((item, index) => <Track track={item.track} key={index}/> );
     }
     return (
     <React.Fragment>
@@ -57,11 +57,11 @@ export default class UserPlaylist extends React.Component {
         <div className="Playlist-image-container">
           <img className="Playlist-image" src={this.props.playlist.images[0].url || "null"} alt={`playlist for ${this.props.playlist.name}`}/>
         </div>
-        <div className="Playlist-content">
+        <div className="Playlist-description">
           <h3> {this.props.playlist.name}</h3>
           {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
-          {this.state.playlistInfo ? <div className="Track-container"> {tracks} </div>: ''}
         </div>
+        {this.state.playlistInfo ? <div> {tracks} </div>: ''}
       </div>
     </React.Fragment>
     );
