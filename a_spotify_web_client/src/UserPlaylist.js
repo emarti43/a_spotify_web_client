@@ -1,15 +1,20 @@
 import React from 'react';
 import './UserPlaylists.css';
+import Track from './Track.js';
 const axios = require('axios');
 export default class UserPlaylist extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showTracks: false
+    };
     this.displayInfo = this.displayInfo.bind(this);
   }
+
   displayInfo(event) {
     if (this.state.playlistInfo) {
       event.preventDefault();
+      this.setState( prevState => { return {showTracks: !prevState.showTracks} })
     } else {
       event.preventDefault();
       let urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +28,10 @@ export default class UserPlaylist extends React.Component {
         axios(params)
         .then( response => {
           console.log(response);
-          this.setState({playlistInfo: response.data});
+          this.setState({
+            playlistInfo: response.data,
+            showTracks: true
+          });
         })
         .catch( error => {
           console.log(error);
@@ -33,21 +41,6 @@ export default class UserPlaylist extends React.Component {
   }
 
   render() {
-    function Track({track}) {
-        return (
-          <div className='track-container'>
-            <div className='track-image'>
-              <img src={track.album.images[0].url} alt="track"/>
-            </div>
-            <div className='track-content'>
-                <h3 className='track-title'>{track.name}</h3>
-              <div className='track-artists'>
-                {track.artists[0].name}
-              </div>
-            </div>
-          </div>
-        );
-    }
     if (this.state.playlistInfo) {
       var tracks = this.state.playlistInfo.tracks.items.map((item, index) => <Track track={item.track} key={index}/> );
     }
@@ -61,7 +54,7 @@ export default class UserPlaylist extends React.Component {
           <h3> {this.props.playlist.name}</h3>
           {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
         </div>
-        {this.state.playlistInfo ? <div> {tracks} </div>: ''}
+        {this.state.showTracks ? <div> {tracks} </div>: ''}
       </div>
     </React.Fragment>
     );

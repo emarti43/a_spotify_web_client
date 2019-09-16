@@ -39,8 +39,17 @@ body {
 }
 
 body {
-  color: #1dfabb;
+  color: #bcc2be;
 }
+
+h3 {
+  color: white;
+}
+
+h4 {
+  color: white;
+}
+
 a {
   text-decoration: underline;
 }

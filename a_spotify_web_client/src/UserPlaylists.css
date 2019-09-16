@@ -34,17 +34,6 @@
   width: 70%;
 }
 
-.Track-container {
-  text-align: left;
-  width: 100%;
-
-}
-
-.Tracks-container {
-  width: 100%;
-  overflow: hidden;
-}
-
 .track-image {
   float:left;
   width: 10%;
@@ -53,15 +42,14 @@
 .track-content {
   float: left;
   width: 80%;
-  margin: 2px;
-  padding: 2px;
+  padding-left: 5px;
 }
 
 .track-container {
   overflow: hidden;
   transition: background-color 0.5s;
   width: 100%;
-  margin: 5px;
+  padding: 5px;
   border-bottom: solid 1px #3d3a37;
 }
 
@@ -70,7 +58,7 @@
 }
 
 .track-title {
-  margin: 0px;
+  margin: 0;
 }
 
 img {
