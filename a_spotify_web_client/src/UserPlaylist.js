@@ -46,13 +46,15 @@ export default class UserPlaylist extends React.Component {
     }
     return (
     <React.Fragment>
-      <div className="Playlist-container" style={ this.state.playlistInfo ? {backgroundColor: "black"} : {}} onClick={this.displayInfo}>
-        <div className="Playlist-image-container">
-          <img className="Playlist-image" src={this.props.playlist.images[0].url || "null"} alt={`playlist for ${this.props.playlist.name}`}/>
-        </div>
-        <div className="Playlist-description">
-          <h3> {this.props.playlist.name}</h3>
-          {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
+      <div className="Playlist-container" style={ this.state.playlistInfo ? {backgroundColor: "black"} : {}} >
+        <div className="playlist-header" onClick={this.displayInfo}>
+          <div className="Playlist-image-container">
+            <img className="Playlist-image" src={this.props.playlist.images[0].url || "null"} alt={`playlist for ${this.props.playlist.name}`}/>
+          </div>
+          <div className="Playlist-description">
+            <h3> {this.props.playlist.name}</h3>
+            {this.state.playlistInfo ? <h4>{this.state.playlistInfo.tracks.total} Tracks </h4>: ''}
+          </div>
         </div>
         {this.state.showTracks ? <div> {tracks} </div>: ''}
       </div>

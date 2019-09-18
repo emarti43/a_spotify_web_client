@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.playlist-header {
+  width: 100%;
+  overflow: hidden;
+}
+.play-button {
+  width: 5%;
+}
+
 .Playlist-container:hover {
   background-color: #3d3a37;
 }
@@ -35,14 +43,19 @@
 }
 
 .track-image {
-  float:left;
-  width: 10%;
+  width: 5%;
+  float: left;
 }
 
 .track-content {
   float: left;
   width: 80%;
   padding-left: 5px;
+}
+
+.track-url {
+  float: left;
+  width: 5%
 }
 
 .track-container {
