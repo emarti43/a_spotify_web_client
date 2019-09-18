@@ -6,20 +6,19 @@
 
 .Playlist-container {
   overflow: auto;
-  background-color: black;
-  transition: background-color 0.5s;
   cursor: pointer;
 }
 
 .playlist-header {
   width: 100%;
   overflow: hidden;
+  transition: background-color 0.5s;
 }
 .play-button {
   width: 5%;
 }
 
-.Playlist-container:hover {
+.playlist-header:hover {
   background-color: #3d3a37;
 }
 
@@ -45,29 +44,37 @@
 .track-image {
   width: 5%;
   float: left;
+  margin-top: 5px;
 }
 
 .track-content {
+  margin-top: 3px;
   float: left;
   width: 80%;
   padding-left: 5px;
 }
 
 .track-url {
-  float: left;
-  width: 5%
+  float: right;
+  width: 5%;
+  margin-top: 5px;
 }
 
 .track-container {
   overflow: hidden;
   transition: background-color 0.5s;
-  width: 100%;
-  padding: 5px;
-  border-bottom: solid 1px #3d3a37;
+  padding: 10px;
 }
 
 .track-container:hover {
   background-color: #3d3a37;
+}
+
+.tracklist-container {
+  animation: 0.5s fade-up ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .track-title {
@@ -76,4 +83,15 @@
 
 img {
   width: 100%;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate(0%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
 }

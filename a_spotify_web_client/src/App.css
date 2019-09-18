@@ -1,5 +1,4 @@
 .App {
-  background: #000000;
   background-image: url("website-background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -30,7 +29,6 @@
 
 body {
   align-items: center;
-  background-color: #000000;
   color: white;
   display: flex;
   flex-direction: column;
@@ -40,6 +38,10 @@ body {
 
 body {
   color: #bcc2be;
+}
+
+h2 {
+  color: white;
 }
 
 h3 {
