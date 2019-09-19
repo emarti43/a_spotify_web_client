@@ -1,2 +1,2 @@
 # a_spotify_web_client
-a spotify web client
+Experimenting/creating a UI for spotify
