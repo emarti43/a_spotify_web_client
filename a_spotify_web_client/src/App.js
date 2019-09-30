@@ -5,6 +5,7 @@ import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
 import loadingIcon from './loading-icon.svg';
 import MusicPlayer from './MusicPlayer';
+import websiteBackground from './website-background.jpg';
 const axios = require('axios');
 
 export default class App extends React.Component {
@@ -84,7 +85,6 @@ export default class App extends React.Component {
         </div>
       {this.state.userInfo ? <MusicPlayer/> : ''}
       </div>
-
     );
   }
 }

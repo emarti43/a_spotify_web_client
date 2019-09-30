@@ -1,7 +1,6 @@
 .music-player {
   margin: auto;
   position:fixed;
-  vertical-align: bottom;
   overflow: hidden;
   display: block;
   bottom: 0;
@@ -14,7 +13,12 @@
   text-align: center;
   width: 50%;
   margin: auto;
+  height: middle;
 }
+
 .action-button {
-  width: 100px;
+  width: 50px;
+  background-color: inherit;
+  margin: 15px;
+  border: none;
 }
