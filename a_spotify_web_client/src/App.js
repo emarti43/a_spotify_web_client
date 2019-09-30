@@ -3,6 +3,8 @@ import logo from './spotify-icon.png';
 import './App.css';
 import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
+import loadingIcon from './loading-icon.svg';
+import MusicPlayer from './MusicPlayer';
 const axios = require('axios');
 
 export default class App extends React.Component {
@@ -70,19 +72,19 @@ export default class App extends React.Component {
     let content =
     <div>
       {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : <LoginContent/>}
-      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists}/> : ''}
+      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists}/> : this.state.userInfo ? <img src={loadingIcon}/> : ''}
     </div>;
-
     return (
       <div className="App">
         <div className="container">
           <div className="center-text">
-            <img src={logo} className="Spotify-logo" alt="logo" />
+            <img src={logo} className="Spotify-logo" alt="logo" style={{width: "25%"}}/>
           </div>
-
           {content}
         </div>
+      {this.state.userInfo ? <MusicPlayer/> : ''}
       </div>
+
     );
   }
 }
