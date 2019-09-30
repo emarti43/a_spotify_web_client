@@ -1,0 +1,20 @@
+.music-player {
+  margin: auto;
+  position:fixed;
+  vertical-align: bottom;
+  overflow: hidden;
+  display: block;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
+
+.player-actions {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+.action-button {
+  width: 100px;
+}

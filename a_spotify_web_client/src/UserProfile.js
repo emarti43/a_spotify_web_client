@@ -9,9 +9,9 @@ export default class UserProfile extends React.Component {
           <img src={this.props.userInfo.images[0].url} className="UserProfile-image" alt="A profile"/>
         </div>
         <div className="UserProfile-content">
-          <h4>
+          <h2>
             {this.props.userInfo.display_name}
-          </h4>
+          </h2>
           <a href={this.props.userInfo.external_urls.spotify}>
             Spotify Profile
           </a>
