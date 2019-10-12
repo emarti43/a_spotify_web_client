@@ -20,7 +20,8 @@ function MusicPlayer(props) {
     genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
       setPlayingState(response.data.item);
     }).catch( error => console.log(error));
-  }, [])
+  }, []);
+
   const toggleState = e =>  {
     const urlParams = new URLSearchParams(window.location.search);
     if (isPlaying) {
@@ -47,10 +48,19 @@ function MusicPlayer(props) {
     }).catch( error => console.log(error));
 
   }
+
   return(
     <div className='music-player'>
       <div className='currently-playing'>
-       {currentlyPlaying ? <b>Now playing {currentlyPlaying.name}</b>: ''}
+       {currentlyPlaying ?
+         <React.Fragment>
+           <img src={currentlyPlaying.album.images[0].url} className='player-image'/>
+           <div className='currently-playing-info'>
+             <div><b>{currentlyPlaying.name}</b></div>
+             <div><span>{currentlyPlaying.artists[0].name}</span></div>
+           </div>
+         </React.Fragment>
+         : ''}
       </div>
       <div className='player-actions'>
         {renderAction(prevButton, 'skip to previous', prevTrack)}
