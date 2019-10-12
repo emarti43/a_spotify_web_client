@@ -15,6 +15,12 @@ function MusicPlayer(props) {
       setPlayingState(response.data.item);
     }).catch( error => console.log(error));
   }
+
+  useEffect( () => {
+    genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
+      setPlayingState(response.data.item);
+    }).catch( error => console.log(error));
+  }, [])
   const toggleState = e =>  {
     const urlParams = new URLSearchParams(window.location.search);
     if (isPlaying) {
