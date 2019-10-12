@@ -17,6 +17,7 @@ export default class App extends React.Component {
     this.fetchUserPlaylists = this.fetchUserPlaylists.bind(this);
     this.renderDetails = this.renderDetails.bind(this);
   }
+
   renderDetails(id) {
     let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('access_token')) {
@@ -103,7 +104,7 @@ export default class App extends React.Component {
           {content}
         </div>
         {this.state.userInfo ? <MusicPlayer/> : ''}
-        {this.state.playlist ? <PlaylistDetails playlist={this.state.playlist}/> : ''}
+        <PlaylistDetails playlist={this.state.playlist}/>
       </div>
     );
   }
