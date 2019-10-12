@@ -103,8 +103,11 @@ export default class App extends React.Component {
           </div>
           {content}
         </div>
-        {this.state.userInfo ? <React.Fragement><MusicPlayer/>
-        <PlaylistDetails playlist={this.state.playlist}/> </React.Fragement>
+        {this.state.userInfo ?
+        <React.Fragment>
+          <MusicPlayer/>
+          <PlaylistDetails playlist={this.state.playlist}/>
+        </React.Fragment>
         : ''}
 
       </div>

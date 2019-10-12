@@ -22,3 +22,9 @@
   margin: 15px;
   border: none;
 }
+
+.currentlyPlaying {
+  margin: 10%;
+  color: white;
+  float: left;
+}
