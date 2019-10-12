@@ -1,9 +1,7 @@
 import React from 'react';
 import './UserPlaylists.css';
 import playButton from './play-button.png'
-import genericRequest from './ApiRequests';
 function Track({track}) {
-  const urlParams = new URLSearchParams(window.location.search);
   const playTrack = () => {
     console.log('there\' no endpoint for this to work rn');
   }
@@ -16,9 +14,9 @@ function Track({track}) {
         </div>
       </div>
       <div className='track-url'>
-        <a  className="play-button" onClick={() => playTrack()}>
+        <div className="play-button" onClick={() => playTrack()}>
           <img src={playButton} alt="play button"/>
-        </a>
+        </div>
       </div>
     </div>
   );

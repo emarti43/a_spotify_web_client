@@ -142,4 +142,4 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-var server = app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);

@@ -93,7 +93,7 @@ export default class App extends React.Component {
     let content =
     <div>
       {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : <LoginContent/>}
-      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists} renderDetails={this.renderDetails}/> : this.state.userInfo ? <img src={loadingIcon}/> : ''}
+      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists} renderDetails={this.renderDetails}/> : this.state.userInfo ? <img src={loadingIcon} alt='loading Icon'/> : ''}
     </div>;
     return (
       <div className="App">
