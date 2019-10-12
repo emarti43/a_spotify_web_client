@@ -1,6 +1,6 @@
 # a_spotify_web_client
 Desktop UI for spotify (work in progress)
-## installing on local machine
+## Installing on Local Machine
 * you must install  node `12.8.0` (the one with hooks)
 * install the packages (`yarn install` or `npm install`)
 ## Running the Server
