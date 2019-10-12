@@ -5,6 +5,7 @@ import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
 import loadingIcon from './loading-icon.svg';
 import MusicPlayer from './MusicPlayer';
+import PlaylistDetails from './PlaylistDetails';
 const axios = require('axios');
 
 export default class App extends React.Component {
@@ -14,6 +15,26 @@ export default class App extends React.Component {
     this.state = {};
     this.fetchUserInformation = this.fetchUserInformation.bind(this);
     this.fetchUserPlaylists = this.fetchUserPlaylists.bind(this);
+    this.renderDetails = this.renderDetails.bind(this);
+  }
+
+  renderDetails(id) {
+    let urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('access_token')) {
+      let params = {
+        headers: {'Authorization': 'Bearer ' + urlParams.get('access_token')},
+        json: true,
+        method: 'get',
+        url: 'https://api.spotify.com/v1/playlists/' + id,
+      }
+      axios(params)
+      .then( response => {
+        this.setState({playlist: response.data})
+      })
+      .catch( error => {
+        console.log(error);
+      });
+    }
   }
 
   fetchUserInformation() {
@@ -72,19 +93,21 @@ export default class App extends React.Component {
     let content =
     <div>
       {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : <LoginContent/>}
-      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists}/> : this.state.userInfo ? <img src={loadingIcon}/> : ''}
+      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists} renderDetails={this.renderDetails}/> : this.state.userInfo ? <img src={loadingIcon}/> : ''}
     </div>;
     return (
       <div className="App">
-        <div className="container">
+        <div className={this.state.userInfo ? "main-body": 'main-login'}>
           <div className="center-text">
             <img src={logo} className="Spotify-logo" alt="logo" style={{width: "25%"}}/>
           </div>
           {content}
         </div>
-      {this.state.userInfo ? <MusicPlayer/> : ''}
-      </div>
+        {this.state.userInfo ? <React.Fragement><MusicPlayer/>
+        <PlaylistDetails playlist={this.state.playlist}/> </React.Fragement>
+        : ''}
 
+      </div>
     );
   }
 }

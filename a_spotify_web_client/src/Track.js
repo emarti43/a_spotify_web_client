@@ -4,9 +4,6 @@ import playButton from './play-button.png'
 function Track({track}) {
     return (
       <div className='track-container'>
-        <div className='track-image'>
-          <img src={track.album.images[0].url} alt="track"/>
-        </div>
         <div className='track-content'>
           <h3 className='track-title'>{track.name}</h3>
           <div className='track-artists'>

@@ -7,6 +7,8 @@
 .Playlist-container {
   overflow: auto;
   cursor: pointer;
+  float: left;
+  width: 30%
 }
 
 .playlist-header {
@@ -24,8 +26,7 @@
 
 .Playlist-image-container {
   float: left;
-  max-height: 100%;
-  width: 25%;
+  max-height: 90%;
   margin: 5px;
 }
 
@@ -71,10 +72,7 @@
 }
 
 .tracklist-container {
-  animation: 0.5s fade-up ease-out;
-  animation-fill-mode: forwards;
-  opacity: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .track-title {
@@ -83,15 +81,4 @@
 
 img {
   width: 100%;
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translate(0%, -60%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(0%, 0%);
-  }
 }

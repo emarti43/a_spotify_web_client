@@ -3,10 +3,26 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  float:left;
+  padding-bottom: 100px;
 }
+
 .container {
   margin: auto;
-  background: rgba(0, 0, 0, .5)
+  background: rgba(0, 0, 0, .6);
+}
+
+.main-body {
+  background: rgba(0, 0, 0, .6);
+  float: left;
+  width: 74%;
+  height: 90vh;
+  overflow: auto;
+}
+
+.main-login {
+  background-color: #1c2120;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,6 +51,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   background-color: black;
+
 }
 
 body {
