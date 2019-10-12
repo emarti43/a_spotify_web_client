@@ -97,14 +97,16 @@ export default class App extends React.Component {
     </div>;
     return (
       <div className="App">
-        <div className="main-body">
+        <div className={this.state.userInfo ? "main-body": 'main-login'}>
           <div className="center-text">
             <img src={logo} className="Spotify-logo" alt="logo" style={{width: "25%"}}/>
           </div>
           {content}
         </div>
-        {this.state.userInfo ? <MusicPlayer/> : ''}
-        <PlaylistDetails playlist={this.state.playlist}/>
+        {this.state.userInfo ? <React.Fragement><MusicPlayer/>
+        <PlaylistDetails playlist={this.state.playlist}/> </React.Fragement>
+        : ''}
+
       </div>
     );
   }
