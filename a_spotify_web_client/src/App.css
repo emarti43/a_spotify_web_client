@@ -3,10 +3,21 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  float:left;
+  padding-bottom: 100px;
 }
+
 .container {
   margin: auto;
   background: rgba(0, 0, 0, .6);
+}
+
+.main-body {
+  background: rgba(0, 0, 0, .6);
+  float: left;
+  width: 74%;
+  height: 90vh;
+  overflow: auto;
 }
 
 .App-logo {
