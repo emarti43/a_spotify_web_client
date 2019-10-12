@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MusicPlayer.css';
 import genericRequest from './ApiRequests';
 import playButton from './play-button.png';
@@ -9,12 +9,12 @@ function MusicPlayer(props) {
   const [isPlaying, setPlayState] = useState(false);
   const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
   const urlParams = new URLSearchParams(window.location.search);
-  var currentlyPlaying = {};
-  genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
-    console.log(response.data)
-    currentlyPlaying = response.data.item;
-  }).catch( error => console.log(error));
-
+  const [currentlyPlaying, setPlayingState] = useState();
+  const getPlayingState = () => {
+    genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
+      setPlayingState(response.data.item);
+    }).catch( error => console.log(error));
+  }
   const toggleState = e =>  {
     const urlParams = new URLSearchParams(window.location.search);
     if (isPlaying) {
@@ -30,20 +30,21 @@ function MusicPlayer(props) {
   const skipTrack = () => {
     const urlParams = new URLSearchParams(window.location.search);
     genericRequest('post', '/me/player/next', urlParams.get('access_token')).then( response => {
-      console.log('');
+      getPlayingState();
     }).catch( error => console.log(error));
   }
 
   const prevTrack = () => {
     const urlParams = new URLSearchParams(window.location.search);
     genericRequest('post', '/me/player/previous', urlParams.get('access_token')).then( response => {
-      console.log('');
+      getPlayingState();
     }).catch( error => console.log(error));
+
   }
   return(
     <div className='music-player'>
       <div className='currently-playing'>
-       <b>Nothing playing at the moment</b>
+       {currentlyPlaying ? <b>Now playing {currentlyPlaying.name}</b>: ''}
       </div>
       <div className='player-actions'>
         {renderAction(prevButton, 'skip to previous', prevTrack)}
