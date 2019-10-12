@@ -6,3 +6,13 @@
   background-color: #1c2120;
   height: 88vh;
 }
+@media (max-width: 990px) {
+  .details-container {
+    overflow: auto;
+    float: left;
+    width: 24%;
+    padding: 5px;
+    background-color: #1c2120;
+    height: 88vh;
+  }
+}

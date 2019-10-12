@@ -1,14 +1,32 @@
 .Playlists-container {
   margin: auto;
   overflow: auto;
+  display: grid;
   width: 80%;
+  grid-gap: 50px;
+  grid-template-columns: 30% 30% 30%;
 }
-
+@media (max-width: 978px) {
+  .Playlists-container {
+    margin: auto;
+    overflow: auto;
+    display: grid;
+    width: 80%;
+    grid-gap: 50px;
+    grid-template-columns: 40% 40%;
+  }
+}
 .Playlist-container {
   overflow: auto;
   cursor: pointer;
-  float: left;
-  width: 30%
+  width: 100%.Playlists-container {
+    margin: auto;
+    overflow: auto;
+    display: grid;
+    width: 80%;
+    grid-gap: 50px;
+    grid-template-columns: 30% 30% 30%;
+  };
 }
 
 .playlist-header {
