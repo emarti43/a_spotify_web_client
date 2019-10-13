@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import logo from './spotify-icon.png';
 import './App.css';
 import UserProfile from './UserProfile';
@@ -6,38 +6,18 @@ import UserPlaylists from './UserPlaylists';
 import loadingIcon from './loading-icon.svg';
 import MusicPlayer from './MusicPlayer';
 import PlaylistDetails from './PlaylistDetails';
+import PlaylistDetailsContext from './PlaylistDetailsContext';
+import PlaylistDetailsReducer from './PlaylistDetailsReducer';
 const axios = require('axios');
 
-export default class App extends React.Component {
+export default function App() {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.fetchUserInformation = this.fetchUserInformation.bind(this);
-    this.fetchUserPlaylists = this.fetchUserPlaylists.bind(this);
-    this.renderDetails = this.renderDetails.bind(this);
-  }
+  const [userInfo, setUserInfo] = useState();
+  const [userPlaylists, setPlaylists] = useState();
+  let initialUserState = PlaylistDetailsContext;
+  let [state, dispatch] = useReducer(PlaylistDetailsReducer, initialUserState);
 
-  renderDetails(id) {
-    let urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('access_token')) {
-      let params = {
-        headers: {'Authorization': 'Bearer ' + urlParams.get('access_token')},
-        json: true,
-        method: 'get',
-        url: 'https://api.spotify.com/v1/playlists/' + id,
-      }
-      axios(params)
-      .then( response => {
-        this.setState({playlist: response.data})
-      })
-      .catch( error => {
-        console.log(error);
-      });
-    }
-  }
-
-  fetchUserInformation() {
+  const fetchUserInformation = () =>  {
     let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('access_token')) {
       let params = {
@@ -48,7 +28,7 @@ export default class App extends React.Component {
       }
       axios(params)
       .then( response => {
-        this.setState({userInfo: response.data})
+        setUserInfo(response.data);
       })
       .catch( error => {
         console.log(error);
@@ -56,7 +36,7 @@ export default class App extends React.Component {
     }
   }
 
-  fetchUserPlaylists() {
+  const fetchUserPlaylists = () => {
     let urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('access_token')) {
       let params = {
@@ -67,7 +47,7 @@ export default class App extends React.Component {
       }
       axios(params)
       .then( response => {
-        this.setState({userPlaylists: response.data.items})
+        setPlaylists(response.data.items)
       })
       .catch( error => {
         console.log(error);
@@ -75,42 +55,42 @@ export default class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchUserInformation();
-    this.fetchUserPlaylists();
-  }
+  useEffect(() => {
+    fetchUserInformation();
+    fetchUserPlaylists();
+  }, [])
 
-  render () {
-    function LoginContent(props) {
-      return(
-        <div className="center-text">
-          <h2 className="login-content">
-            Please Login <a className="login-button" href="/login"> Here</a>
-          </h2>
-        </div>
-      );
-    }
-    let content =
-    <div>
-      {this.state.userInfo ? <UserProfile userInfo={this.state.userInfo}/> : <LoginContent/>}
-      {this.state.userPlaylists ? <UserPlaylists userPlaylists={this.state.userPlaylists} renderDetails={this.renderDetails}/> : this.state.userInfo ? <img src={loadingIcon} alt='loading Icon'/> : ''}
-    </div>;
-    return (
+  function LoginContent(props) {
+    return(
+      <div className="center-text">
+        <h2 className="login-content">
+          Please Login <a className="login-button" href="/login"> Here</a>
+        </h2>
+      </div>
+    );
+  }
+  let content =
+  <div>
+    {userInfo ? <UserProfile userInfo={userInfo}/> : <LoginContent/>}
+    {userPlaylists ? <UserPlaylists userPlaylists={userPlaylists} /> : userInfo ? <img src={loadingIcon} alt='loading Icon'/> : ''}
+  </div>;
+  return (
+    <PlaylistDetailsContext.Provider value={{state, dispatch}}>
       <div className="App">
-        <div className={this.state.userInfo ? "main-body": 'main-login'}>
+        <div className={userInfo ? "main-body": 'main-login'}>
           <div className="center-text">
             <img src={logo} className="Spotify-logo" alt="logo" style={{width: "25%"}}/>
           </div>
           {content}
         </div>
-        {this.state.userInfo ?
+        {userInfo ?
         <React.Fragment>
           <MusicPlayer/>
-          <PlaylistDetails playlist={this.state.playlist}/>
+          <PlaylistDetails/>
         </React.Fragment>
-        : ''}
 
+        : ''}
       </div>
-    );
-  }
+    </PlaylistDetailsContext.Provider>
+  );
 }
