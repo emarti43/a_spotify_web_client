@@ -19,6 +19,7 @@ function MusicPlayer(props) {
   useEffect( () => {
     genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
       setPlayingState(response.data.item);
+      setPlayState(response.data ? true: false);
     }).catch( error => console.log(error));
   }, []);
 
@@ -54,7 +55,7 @@ function MusicPlayer(props) {
       <div className='currently-playing'>
        {currentlyPlaying ?
          <React.Fragment>
-           <img src={currentlyPlaying.album.images[0].url} className='player-image'/>
+           <img src={currentlyPlaying.album.images[0].url} alt='currently playing'className='player-image'/>
            <div className='currently-playing-info'>
              <div><b>{currentlyPlaying.name}</b></div>
              <div><span>{currentlyPlaying.artists[0].name}</span></div>

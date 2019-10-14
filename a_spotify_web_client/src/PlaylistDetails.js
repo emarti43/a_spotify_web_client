@@ -1,22 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Track from './Track';
 import './PlaylistDetails.css';
+import './placeholder-art-icon.png';
 import {default as PlaylistDetailsContext} from './PlaylistDetailsContext';
 import {popPlaylist, pushPlaylist} from './PlaylistDetailsActions'
+import RecentlyPlayed from './RecentlyPlayed'
 
 function PlaylistDetails() {
   let {state, dispatch } = useContext(PlaylistDetailsContext);
 
-  const placeholder = <div className="details-container" >
-    <div className="details-header">
-      <div className="Playlist-description" style={{float: 'none'}}>
-        <h3> Playlists will appear here</h3>
-      </div>
-    </div>
-  </div>
-
-  if (state.playlists === undefined) return (placeholder);
-  if (state.playlists && state.playlists.length < 1) return(placeholder);
+  if (state.playlists === undefined) return (<RecentlyPlayed/>);
+  if (state.playlists && state.playlists.length < 1) return(<RecentlyPlayed/>);
 
   const currentPlaylist = state.playlists[state.playlists.length - 1];
   console.log(currentPlaylist, state.playlists);

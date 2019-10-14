@@ -6,7 +6,7 @@
   bottom: 0;
   height: 11vh;
   width: 100%;
-  background-color: black;
+  background-color: #0c1110;
 }
 
 .player-actions {
@@ -14,8 +14,10 @@
   width: 50%;
   margin: auto;
 }
+
 .currently-playing-info {
   float:left;
+  padding: 10px;
 }
 
 .action-button {
@@ -28,11 +30,20 @@
 .currently-playing {
   color: white;
   float: left;
-  padding: 1%;
+  padding: 10px;
   width: 34%;
 }
 
 .player-image {
   float: left;
   width: 70px;
+}
+
+@media (max-width: 978px) {
+  .currently-playing {
+    color: white;
+    float: left;
+    padding: 10px;
+    width: 25%;
+  }
 }

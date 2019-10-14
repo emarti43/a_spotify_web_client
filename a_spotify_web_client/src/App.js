@@ -78,9 +78,6 @@ export default function App() {
     <PlaylistDetailsContext.Provider value={{state, dispatch}}>
       <div className="App">
         <div className={userInfo ? "main-body": 'main-login'}>
-          <div className="center-text">
-            <img src={logo} className="Spotify-logo" alt="logo" style={{width: "25%"}}/>
-          </div>
           {content}
         </div>
         {userInfo ?

@@ -13,7 +13,7 @@ function UserPlaylist({playlist, index}) {
           <img className="Playlist-image" src={playlist.images[0].url || "null"} alt={`playlist for ${playlist.name}`}/>
         </div>
         <div className="Playlist-description">
-          <h4> {playlist.name} </h4>
+          <h4 className="Playlist-description"> {playlist.name} </h4>
         </div>
       </div>
     </div>

@@ -3,30 +3,41 @@
   overflow: auto;
   display: grid;
   width: 80%;
-  grid-gap: 50px;
+  grid-gap: 10px;
   grid-template-columns: 30% 30% 30%;
 }
+
+.Playlist-container {
+  overflow: auto;
+  cursor: pointer;
+  width: 100%;
+}
+
 @media (max-width: 978px) {
   .Playlists-container {
     margin: auto;
     overflow: auto;
     display: grid;
     width: 80%;
-    grid-gap: 50px;
+    grid-gap: 10px;
     grid-template-columns: 40% 40%;
   }
+  .Playlist-container {
+    overflow: auto;
+    cursor: pointer;
+    width: 175px;
+  }
 }
-.Playlist-container {
-  overflow: auto;
-  cursor: pointer;
-  width: 100%.Playlists-container {
+
+@media (min-width: 1250px) {
+  .Playlists-container {
     margin: auto;
     overflow: auto;
     display: grid;
     width: 80%;
-    grid-gap: 50px;
-    grid-template-columns: 30% 30% 30%;
-  };
+    grid-gap: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
+  }
 }
 
 .playlist-header {
@@ -44,8 +55,9 @@
 
 .Playlist-image-container {
   float: left;
-  max-height: 90%;
+  width:100%;
   margin: 5px;
+  background-image: url('placeholder-art-icon.png')
 }
 
 .Playlist-image {
@@ -57,7 +69,11 @@
 .Playlist-description {
   margin-left: 1%;
   float: left;
-  width: 70%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+
 }
 
 .track-image {

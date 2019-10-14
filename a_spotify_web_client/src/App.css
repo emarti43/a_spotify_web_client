@@ -5,6 +5,7 @@
   background-size: cover;
   float:left;
   padding-bottom: 100px;
+  width: 100vw;
 }
 
 .container {
@@ -15,9 +16,15 @@
 .main-body {
   background: rgba(0, 0, 0, .6);
   float: left;
-  width: 74%;
+  width: 75%;
   height: 90vh;
   overflow: auto;
+}
+
+@media (max-width: 978px) {
+  .main-body {
+    width: 66%;
+  }
 }
 
 .main-login {
@@ -58,14 +65,8 @@ body {
   color: #bcc2be;
 }
 
-h2 {
-  color: white;
-}
-
-h3 {
-  color: white;
-}
-
+h2,
+h3,
 h4 {
   color: white;
 }
@@ -73,6 +74,7 @@ h4 {
 a {
   text-decoration: underline;
 }
+
 a:visited {
   color: pink;
 }
