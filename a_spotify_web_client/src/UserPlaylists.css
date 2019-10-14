@@ -46,7 +46,9 @@
   transition: background-color 0.5s;
 }
 .play-button {
-  width: 5%;
+  padding-top: 10px;
+  width: 15px;
+  float: right;
 }
 
 .playlist-header:hover {
@@ -92,7 +94,6 @@
 .track-url {
   float: right;
   width: 5%;
-  margin-top: 5px;
 }
 
 .track-container {

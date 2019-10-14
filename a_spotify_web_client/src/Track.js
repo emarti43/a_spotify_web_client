@@ -13,10 +13,8 @@ function Track({track}) {
           {track.artists[0].name}
         </div>
       </div>
-      <div className='track-url'>
-        <div className="play-button" onClick={() => playTrack()}>
-          <img src={playButton} alt="play button"/>
-        </div>
+      <div className="play-button" onClick={() => playTrack()}>
+        <img src={playButton} alt="play button"/>
       </div>
     </div>
   );
