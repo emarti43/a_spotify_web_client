@@ -1,10 +1,10 @@
 .music-player {
   margin: auto;
-  position:fixed;
+  position: absolute;
   overflow: hidden;
   display: block;
   bottom: 0;
-  height: 11vh;
+  height: 13vh;
   width: 100%;
   background-color: #0c1110;
   z-index: 2;
@@ -19,13 +19,15 @@
   right: 33vw;
 }
 
-
-
-.currently-playing-image {
-  float:left;
+.currently-playing {
+  color: white;
+  position: absolute;
+  padding: 10px;
+  width: 33%;
 }
+
+
 .currently-playing-info {
-  float: left;
   padding: 10px;
   width: 75%;
 }
@@ -38,16 +40,19 @@
   overflow: visible;
 }
 
-.currently-playing {
-  color: white;
-  float: left;
-  padding: 10px;
-  width: 33%;
-}
+
 
 .player-image {
   float: left;
   width: 70px;
+}
+
+.current-device {
+  color: orange;
+  padding: 10px;
+  float: right;
+  position: absolute;
+  right: 1vw;
 }
 
 @media (max-width: 978px) {

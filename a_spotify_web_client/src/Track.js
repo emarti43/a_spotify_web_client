@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './UserPlaylists.css';
-import playButton from './play-button.png'
-function Track({track}) {
-  const playTrack = () => {
-    console.log('there\' no endpoint for this to work rn');
+import playButton from './play-button.png';
+import genericRequest from './ApiRequests';
+import UserContext from './Contexts/UserContext';
+import { setCurrentlyPlaying } from './Contexts/UserActions';
+function Track({track, playlist, offset}) {
+  const { dispatch } = useContext(UserContext);
+  const playTrack = async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    await genericRequest('put','/me/player/play', urlParams.get('access_token'), {
+      context_uri: playlist.external_urls.spotify,
+      offset: {position: offset}
+    });
+    setCurrentlyPlaying(dispatch);
   }
   return (
     <div className='track-container'>

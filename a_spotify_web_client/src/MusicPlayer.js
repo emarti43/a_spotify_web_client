@@ -1,26 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './MusicPlayer.css';
 import genericRequest from './ApiRequests';
 import playButton from './play-button.png';
 import prevButton from './prev-button.png';
 import pauseButton from './pause-button.png';
 import skipButton from './skip-button.png';
+import { default as UserContext } from './Contexts/UserContext';
+import { setCurrentlyPlaying } from './Contexts/UserActions';
 function MusicPlayer(props) {
-  const [isPlaying, setPlayState] = useState(false);
-  const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
+  const { state, dispatch } = useContext(UserContext);
+  const [isPlaying, setPlayState] = useState(state.currentlyPlaying === undefined ? true : false);
+  const [devices, setDevices] = useState(undefined); // might use this later to display devices
+  const [currentDevice, setCurrentDevice] = useState(undefined);
+  const currentlyPlaying = state.currentlyPlaying;
+
   const urlParams = new URLSearchParams(window.location.search);
-  const [currentlyPlaying, setPlayingState] = useState();
-  const getPlayingState = () => {
-    genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
-      setPlayingState(response.data.item);
-    }).catch( error => console.log(error));
-  }
+
+
+  const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
+
 
   useEffect( () => {
-    genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token')).then(response => {
-      setPlayingState(response.data.item);
-      setPlayState(response.data ? true: false);
-    }).catch( error => console.log(error));
+    setCurrentlyPlaying(dispatch);
+    genericRequest('get', '/me/player/devices', urlParams.get('access_token')).then(response => {
+      setDevices(response.data.devices);
+      setCurrentDevice(response.data.devices.filter( e => e.is_active)[0]);
+    });
   }, []);
 
   const toggleState = e =>  {
@@ -35,19 +40,17 @@ function MusicPlayer(props) {
     setPlayState(!isPlaying);
   }
 
-  const skipTrack = () => {
+  const skipTrack  = async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    genericRequest('post', '/me/player/next', urlParams.get('access_token')).then( response => {
-      getPlayingState();
-    }).catch( error => console.log(error));
+    await genericRequest('post', '/me/player/next', urlParams.get('access_token'));
+
+    setCurrentlyPlaying(dispatch);
   }
 
-  const prevTrack = () => {
+  const prevTrack = async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    genericRequest('post', '/me/player/previous', urlParams.get('access_token')).then( response => {
-      getPlayingState();
-    }).catch( error => console.log(error));
-
+    await genericRequest('post', '/me/player/previous', urlParams.get('access_token'));
+    setCurrentlyPlaying(dispatch);
   }
 
   return(
@@ -73,6 +76,9 @@ function MusicPlayer(props) {
           renderAction(playButton, 'play', toggleState)
         }
         {renderAction(skipButton, 'skip', skipTrack)}
+      </div>
+      <div className='current-device'>
+        { currentDevice ? <span>Playing on <b>{currentDevice.name}</b></span>: '' }
       </div>
     </div>
   );

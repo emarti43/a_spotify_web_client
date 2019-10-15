@@ -1,21 +1,20 @@
 import React, {useState, useEffect, useReducer} from 'react';
-import logo from './spotify-icon.png';
 import './App.css';
 import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
 import loadingIcon from './loading-icon.svg';
 import MusicPlayer from './MusicPlayer';
 import PlaylistDetails from './PlaylistDetails';
-import PlaylistDetailsContext from './PlaylistDetailsContext';
-import PlaylistDetailsReducer from './PlaylistDetailsReducer';
+import UserContext from './Contexts/UserContext';
+import UserReducer from './Contexts/UserReducer';
 const axios = require('axios');
 
 export default function App() {
 
   const [userInfo, setUserInfo] = useState();
   const [userPlaylists, setPlaylists] = useState();
-  let initialUserState = PlaylistDetailsContext;
-  let [state, dispatch] = useReducer(PlaylistDetailsReducer, initialUserState);
+  let initialUserState = UserContext;
+  let [state, dispatch] = useReducer(UserReducer, initialUserState);
 
   const fetchUserInformation = () =>  {
     let urlParams = new URLSearchParams(window.location.search);
@@ -75,7 +74,7 @@ export default function App() {
     {userPlaylists ? <UserPlaylists userPlaylists={userPlaylists} /> : userInfo ? <img src={loadingIcon} alt='loading Icon'/> : ''}
   </div>;
   return (
-    <PlaylistDetailsContext.Provider value={{state, dispatch}}>
+    <UserContext.Provider value={{state, dispatch}}>
       <div className="App">
         <div className={userInfo ? "main-body": 'main-login'}>
           {content}
@@ -85,9 +84,8 @@ export default function App() {
           <MusicPlayer/>
           <PlaylistDetails/>
         </React.Fragment>
-
         : ''}
       </div>
-    </PlaylistDetailsContext.Provider>
+    </UserContext.Provider>
   );
 }

@@ -1,3 +1,5 @@
+import genericRequest from '../ApiRequests';
+
 const axios = require('axios');
 
 const getDetails = async (id) => {
@@ -12,9 +14,15 @@ const getDetails = async (id) => {
     return await axios(params)
   }
 }
+
+const getCurrentlyPlaying = async () => {
+  let urlParams = new URLSearchParams(window.location.search);
+  return genericRequest('get', '/me/player/currently-playing', urlParams.get('access_token'))
+}
+
 export const popPlaylist = (state, dispatch) => {
   try {
-    dispatch({ type: 'POP' })
+    dispatch({ type: 'PLAYLIST_POP' })
   } catch(error) {
     dispatch(state, error);
   };
@@ -23,8 +31,17 @@ export const popPlaylist = (state, dispatch) => {
 export const pushPlaylist = async (state, dispatch) => {
   let playlist = await getDetails(state.playlist.id);
   try {
-    dispatch({ type: 'PUSH', data: playlist.data });
+    dispatch({ type: 'PLAYLIST_PUSH', data: playlist.data });
   } catch(error) {
     dispatch(state, error);
+  }
+}
+
+export const setCurrentlyPlaying = async (dispatch) => {
+  let currentlyPlaying = await getCurrentlyPlaying();
+  try {
+    dispatch({ type: 'UPDATE_TRACK', data: currentlyPlaying.data.item });
+  } catch(error) {
+    dispatch(error);
   }
 }

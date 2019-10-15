@@ -2,19 +2,18 @@ import React, { useContext } from 'react';
 import Track from './Track';
 import './PlaylistDetails.css';
 import './placeholder-art-icon.png';
-import {default as PlaylistDetailsContext} from './PlaylistDetailsContext';
-import {popPlaylist, pushPlaylist} from './PlaylistDetailsActions'
+import {default as UserContext} from './Contexts/UserContext';
+import { popPlaylist } from './Contexts/UserActions';
 import RecentlyPlayed from './RecentlyPlayed'
 
 function PlaylistDetails() {
-  let {state, dispatch } = useContext(PlaylistDetailsContext);
+  let {state, dispatch } = useContext(UserContext);
 
   if (state.playlists === undefined) return (<RecentlyPlayed/>);
   if (state.playlists && state.playlists.length < 1) return(<RecentlyPlayed/>);
 
   const currentPlaylist = state.playlists[state.playlists.length - 1];
-  console.log(currentPlaylist, state.playlists);
-  var tracks = currentPlaylist.tracks.items.map((item, index) => <Track track={item.track} key={index} withImage={false}/> );
+  var tracks = currentPlaylist.tracks.items.map((item, index) => <Track track={item.track} playlist={currentPlaylist} key={index} offset={index} withImage={false}/> );
   return(
     <React.Fragment>
       <div className="details-container" >

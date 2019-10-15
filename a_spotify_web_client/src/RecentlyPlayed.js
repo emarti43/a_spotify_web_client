@@ -9,7 +9,6 @@ function RecentlyPlayed() {
      let urlParams = new URLSearchParams(window.location.search);
      genericRequest('get', '/browse/featured-playlists', urlParams.get('access_token')).then( response => {
        setBrowse(response.data);
-       console.log(response);
      }).catch(error => {
        console.log(error)
      })

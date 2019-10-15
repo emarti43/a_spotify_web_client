@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import './UserPlaylists.css';
-import {default as PlaylistDetailsContext} from './PlaylistDetailsContext';
-import {popPlaylist, pushPlaylist} from './PlaylistDetailsActions';
+import {default as UserContext} from './Contexts/UserContext';
+import { pushPlaylist } from './Contexts/UserActions';
 
 function UserPlaylist({playlist, index}) {
-  let {state, dispatch} = useContext(PlaylistDetailsContext);
+  let {state, dispatch} = useContext(UserContext);
   return (
   <React.Fragment>
     <div className="Playlist-container" >
