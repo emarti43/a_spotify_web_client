@@ -7,6 +7,13 @@
   background-color: #1c2120;
   height: 88vh;
 }
+
+.icon {
+  width: 2vh;
+  cursor: pointer;
+  margin: 2px;
+}
+
 @media (max-width: 978px) {
   .details-container {
     padding: 5px;

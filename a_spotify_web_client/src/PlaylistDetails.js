@@ -5,6 +5,7 @@ import './assets/placeholder-art-icon.png';
 import {default as UserContext} from './Contexts/UserContext';
 import { popPlaylist } from './Contexts/UserActions';
 import RecentlyPlayed from './RecentlyPlayed'
+import closeIcon from './assets/close-icon.png'
 
 function PlaylistDetails() {
   let {state, dispatch } = useContext(UserContext);
@@ -17,7 +18,7 @@ function PlaylistDetails() {
   return(
     <React.Fragment>
       <div className="details-container" >
-        <span onClick={ () => popPlaylist({}, dispatch) }> x</span>
+        <span onClick={ () => popPlaylist({}, dispatch) }> <img src={closeIcon} className="icon" alt="close"/></span>
         <div className="details-header">
           <div className="details-image-container">
             <img className="details-image" src={currentPlaylist.images[0].url || "null"} alt={`playlist for ${currentPlaylist.name}`}/>
