@@ -51,17 +51,12 @@
 
 body {
   align-items: center;
-  color: white;
-  display: flex;
+  color: #bcc2be;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
   background-color: black;
 
-}
-
-body {
-  color: #bcc2be;
 }
 
 h2,
