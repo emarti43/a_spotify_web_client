@@ -63,7 +63,7 @@ function MusicPlayer(props) {
            </div>
            <div className='currently-playing-info'>
              <div><b>{currentlyPlaying.name}</b></div>
-             <div><span>{currentlyPlaying.artists[0].name}</span></div>
+             <div>{currentlyPlaying.artists[0].name}</div>
            </div>
          </React.Fragment>
          : ''}
