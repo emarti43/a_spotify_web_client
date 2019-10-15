@@ -2,7 +2,7 @@ import React, {useState, useEffect, useReducer} from 'react';
 import './App.css';
 import UserProfile from './UserProfile';
 import UserPlaylists from './UserPlaylists';
-import loadingIcon from './loading-icon.svg';
+import loadingIcon from './assets/loading-icon.svg';
 import MusicPlayer from './MusicPlayer';
 import PlaylistDetails from './PlaylistDetails';
 import UserContext from './Contexts/UserContext';

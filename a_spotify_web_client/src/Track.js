@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './UserPlaylists.css';
-import playButton from './play-button.png';
+import playButton from './assets/play-button.png';
 import genericRequest from './ApiRequests';
 import UserContext from './Contexts/UserContext';
 import { setCurrentlyPlaying } from './Contexts/UserActions';

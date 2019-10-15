@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Track from './Track';
 import './PlaylistDetails.css';
-import './placeholder-art-icon.png';
+import './assets/placeholder-art-icon.png';
 import {default as UserContext} from './Contexts/UserContext';
 import { popPlaylist } from './Contexts/UserActions';
 import RecentlyPlayed from './RecentlyPlayed'

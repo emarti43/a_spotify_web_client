@@ -15,12 +15,7 @@
 
 @media (max-width: 978px) {
   .Playlists-container {
-    margin: auto;
-    overflow: auto;
-    display: grid;
-    width: 80%;
-    grid-gap: 10px;
-    grid-template-columns: 40% 40%;
+    grid-template-columns: 50% 50%;
   }
   .Playlist-container {
     overflow: auto;
@@ -31,12 +26,15 @@
 
 @media (min-width: 1250px) {
   .Playlists-container {
-    margin: auto;
-    overflow: auto;
-    display: grid;
-    width: 80%;
     grid-gap: 10px;
     grid-template-columns: 24% 24% 24% 24%;
+  }
+}
+
+@media (max-width: 652px) {
+  .Playlists-container {
+    grid-gap: 5px;
+    grid-template-columns: 100%;
   }
 }
 
@@ -59,7 +57,7 @@
   float: left;
   width:100%;
   margin: 5px;
-  background-image: url('placeholder-art-icon.png')
+  background-image: url('/assets/placeholder-art-icon.png')
 }
 
 .Playlist-image {

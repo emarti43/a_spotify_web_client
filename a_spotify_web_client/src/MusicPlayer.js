@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './MusicPlayer.css';
 import genericRequest from './ApiRequests';
-import playButton from './play-button.png';
-import prevButton from './prev-button.png';
-import pauseButton from './pause-button.png';
-import skipButton from './skip-button.png';
+import playButton from './assets/play-button.png';
+import prevButton from './assets/prev-button.png';
+import pauseButton from './assets/pause-button.png';
+import skipButton from './assets/skip-button.png';
 import { default as UserContext } from './Contexts/UserContext';
 import { setCurrentlyPlaying } from './Contexts/UserActions';
 function MusicPlayer(props) {
