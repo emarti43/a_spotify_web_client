@@ -9,10 +9,9 @@ import { default as UserContext } from './Contexts/UserContext';
 import { setCurrentlyPlaying } from './Contexts/UserActions';
 function MusicPlayer(props) {
   const { state, dispatch } = useContext(UserContext);
-  const [isPlaying, setPlayState] = useState(state.currentlyPlaying === undefined ? true : false);
   const [devices, setDevices] = useState(undefined); // might use this later to display devices
   const [currentDevice, setCurrentDevice] = useState(undefined);
-  const currentlyPlaying = state.currentlyPlaying;
+  const currentlyPlaying = state.currentlyPlaying ? state.currentlyPlaying.item : undefined;
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -28,22 +27,23 @@ function MusicPlayer(props) {
     });
   }, []);
 
-  const toggleState = e =>  {
+  const  toggleState = async () =>  {
     const urlParams = new URLSearchParams(window.location.search);
-    if (isPlaying) {
-      genericRequest('put', '/me/player/play', urlParams.get('access_token')).then( response => {
-        console.log(response);
-      }).catch( error => console.log(error));
-    } else {
-      genericRequest('put', '/me/player/pause').then()
+    let endpoint = '/me/player/play';
+    if (state.currentlyPlaying.is_playing) {
+      endpoint = '/me/player/pause'
     }
-    setPlayState(!isPlaying);
+    try {
+      await genericRequest('put', endpoint, urlParams.get('access_token'))
+    } catch (error) {
+      console.log(error);
+    }
+    setCurrentlyPlaying(dispatch);
   }
 
   const skipTrack  = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     await genericRequest('post', '/me/player/next', urlParams.get('access_token'));
-
     setCurrentlyPlaying(dispatch);
   }
 
@@ -51,6 +51,14 @@ function MusicPlayer(props) {
     const urlParams = new URLSearchParams(window.location.search);
     await genericRequest('post', '/me/player/previous', urlParams.get('access_token'));
     setCurrentlyPlaying(dispatch);
+  }
+  const PlayerActions = ({isPlaying}) => {
+    const playAction = isPlaying ? renderAction(pauseButton, 'pause', toggleState) : renderAction(playButton, 'play', toggleState);
+    return <div className='player-actions'>
+      {renderAction(prevButton, 'skip to previous', prevTrack)}
+      {playAction}
+      {renderAction(skipButton, 'skip', skipTrack)}
+    </div>
   }
 
   return(
@@ -68,15 +76,7 @@ function MusicPlayer(props) {
          </React.Fragment>
          : ''}
       </div>
-      <div className='player-actions'>
-        {renderAction(prevButton, 'skip to previous', prevTrack)}
-        { isPlaying ?
-          renderAction(pauseButton, 'pause', toggleState)
-          :
-          renderAction(playButton, 'play', toggleState)
-        }
-        {renderAction(skipButton, 'skip', skipTrack)}
-      </div>
+        <PlayerActions  isPlaying={state.currentlyPlaying && state.currentlyPlaying.is_playing}/>
       <div className='current-device'>
         { currentDevice ? <span>Playing on <b>{currentDevice.name}</b></span>: '' }
       </div>

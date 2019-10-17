@@ -40,7 +40,7 @@ export const pushPlaylist = async (state, dispatch) => {
 export const setCurrentlyPlaying = async (dispatch) => {
   let currentlyPlaying = await getCurrentlyPlaying();
   try {
-    dispatch({ type: 'UPDATE_TRACK', data: currentlyPlaying.data.item });
+    dispatch({ type: 'UPDATE_TRACK', data: currentlyPlaying.data });
   } catch(error) {
     dispatch(error);
   }

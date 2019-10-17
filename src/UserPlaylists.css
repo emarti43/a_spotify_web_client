@@ -58,7 +58,7 @@
   float: left;
   width:100%;
   margin: 5px;
-  background-image: url('/assets/placeholder-art-icon.png')
+  background-image: url('./assets/placeholder-art-icon.png')
 }
 
 .Playlist-image {
