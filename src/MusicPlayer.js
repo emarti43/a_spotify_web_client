@@ -70,15 +70,15 @@ function MusicPlayer(props) {
              <img src={currentlyPlaying.album.images[0].url} alt='currently playing'className='player-image'/>
            </div>
            <div className='currently-playing-info'>
-             <div><b>{currentlyPlaying.name}</b></div>
-             <div>{currentlyPlaying.artists[0].name}</div>
+             <div className='currently-playing-artist'><b>{currentlyPlaying.name}</b></div>
+             <div className='currently-playing-track'> {currentlyPlaying.artists[0].name}</div>
            </div>
          </React.Fragment>
          : ''}
       </div>
         <PlayerActions  isPlaying={state.currentlyPlaying && state.currentlyPlaying.is_playing}/>
       <div className='current-device'>
-        { currentDevice ? <span>Playing on <b>{currentDevice.name}</b></span>: '' }
+        { currentDevice ? <span><b>{currentDevice.name}</b></span>: '' }
       </div>
     </div>
   );

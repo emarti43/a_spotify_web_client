@@ -14,31 +14,6 @@
   margin: auto;
 }
 
-@media (max-width: 978px) {
-  .Playlists-container {
-    grid-template-columns: 50% 50%;
-  }
-  .Playlist-container {
-    overflow: auto;
-    cursor: pointer;
-    width: 175px;
-  }
-}
-
-@media (min-width: 1250px) {
-  .Playlists-container {
-    grid-gap: 10px;
-    grid-template-columns: 24% 24% 24% 24%;
-  }
-}
-
-@media (max-width: 652px) {
-  .Playlists-container {
-    grid-gap: 5px;
-    grid-template-columns: 100%;
-  }
-}
-
 .playlist-header {
   width: 100%;
   overflow: hidden;
@@ -86,7 +61,7 @@
 .track-content {
   margin-top: 3px;
   float: left;
-  width: 80%;
+  width: 100%;
   padding-left: 5px;
 }
 
@@ -97,7 +72,7 @@
 
 .track-container {
   overflow: hidden;
-  transition: background-color 0.5s;
+  transition: background-color 0.2s;
   padding: 10px;
 }
 
@@ -112,7 +87,44 @@
 .track-title {
   margin: 0;
 }
+.track-container:hover {
+  background-color: #3d3a37;
+}
 
 img {
   width: 100%;
+}
+
+@media (min-width: 1250px) {
+  .Playlists-container {
+    grid-gap: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Playlists-container {
+    grid-gap: 5px;
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 978px) {
+  .Playlists-container {
+    grid-template-columns: 50% 50%;
+  }
+  .Playlist-container {
+    overflow: auto;
+    cursor: pointer;
+    width: 175px;
+  }
+}
+
+@media (max-width: 400px) {
+  .Playlist-container {
+    width: 100%;
+  }
+  .track-container {
+    font-size: 0.7em;
+  }
 }

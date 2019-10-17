@@ -15,15 +15,12 @@ function Track({track, playlist, offset}) {
     setCurrentlyPlaying(dispatch);
   }
   return (
-    <div className='track-container'>
+    <div className='track-container'  onClick={() => playTrack()}>
       <div className='track-content'>
         <h3 className='track-title'>{track.name}</h3>
         <div className='track-artists'>
           {track.artists[0].name}
         </div>
-      </div>
-      <div className="play-button" onClick={() => playTrack()}>
-        <img src={playButton} alt="play button"/>
       </div>
     </div>
   );

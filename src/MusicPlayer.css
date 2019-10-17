@@ -30,9 +30,6 @@
 .currently-playing-info {
   padding: 10px;
   float: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 
@@ -52,12 +49,15 @@
 .current-device {
   color: orange;
   padding: 10px;
-  float: right;
-  position: absolute;
-  right: 1vw;
+}
+.currently-playing-track,
+.currently-playing-artist {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@media (max-width: 978px) {
+@media (max-width: 978px) and (min-width: 842px) {
   .currently-playing {
     color: white;
     float: left;
@@ -69,8 +69,37 @@
 
 }
 
-@media(max-width: 842px) {
+@media(max-width: 842px) and (min-width: 401px) {
   .currently-playing {
     grid-template-columns: 40% 60%;
+  }
+}
+
+@media (max-width: 400px) {
+  .action-button {
+    width: 50px;
+    margin: 2px;
+    overflow: visible;
+  }
+  .player-actions {
+    margin-top: 20px;
+  }
+  .currently-playing-image {
+    display: none;
+  }
+  .currently-playing {
+    grid-template-columns: 100%;
+    font-size: 0.8em;
+  }
+  .currently-playing-info {
+    padding: 0;
+  }
+
+  .current-device {
+    font-size: 0.8em;
+    overflow: scroll;
+  }
+  .player-actions {
+    overflow: visible;
   }
 }
