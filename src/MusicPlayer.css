@@ -50,11 +50,9 @@
   color: orange;
   padding: 10px;
 }
-.currently-playing-track,
-.currently-playing-artist {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+.airplay-icon {
+  width: 25px;
 }
 
 @media (max-width: 978px) and (min-width: 842px) {
@@ -62,6 +60,7 @@
     color: white;
     float: left;
     padding: 5px;
+    overflow: visible;
   }
   .currently-playing {
     grid-template-columns: 33% 66%;
@@ -94,12 +93,18 @@
   .currently-playing-info {
     padding: 0;
   }
-
   .current-device {
     font-size: 0.8em;
     overflow: scroll;
   }
   .player-actions {
     overflow: visible;
+  }
+
+  .currently-playing-track,
+  .currently-playing-artist {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

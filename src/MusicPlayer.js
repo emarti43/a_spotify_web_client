@@ -5,34 +5,24 @@ import playButton from './assets/play-button.png';
 import prevButton from './assets/prev-button.png';
 import pauseButton from './assets/pause-button.png';
 import skipButton from './assets/skip-button.png';
+
 import { default as UserContext } from './Contexts/UserContext';
 import { setCurrentlyPlaying } from './Contexts/UserActions';
+import DeviceList from './DeviceList'
 function MusicPlayer(props) {
   const { state, dispatch } = useContext(UserContext);
-  const [devices, setDevices] = useState(undefined); // might use this later to display devices
-  const [currentDevice, setCurrentDevice] = useState(undefined);
   const currentlyPlaying = state.currentlyPlaying ? state.currentlyPlaying.item : undefined;
-
-  const urlParams = new URLSearchParams(window.location.search);
-
-
-  const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
-
 
   useEffect( () => {
     setCurrentlyPlaying(dispatch);
-    genericRequest('get', '/me/player/devices', urlParams.get('access_token')).then(response => {
-      setDevices(response.data.devices);
-      setCurrentDevice(response.data.devices.filter( e => e.is_active)[0]);
-    });
   }, []);
+
+  const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
 
   const  toggleState = async () =>  {
     const urlParams = new URLSearchParams(window.location.search);
     let endpoint = '/me/player/play';
-    if (state.currentlyPlaying.is_playing) {
-      endpoint = '/me/player/pause'
-    }
+    if (state.currentlyPlaying.is_playing) endpoint = '/me/player/pause';
     try {
       await genericRequest('put', endpoint, urlParams.get('access_token'))
     } catch (error) {
@@ -76,10 +66,8 @@ function MusicPlayer(props) {
          </React.Fragment>
          : ''}
       </div>
-        <PlayerActions  isPlaying={state.currentlyPlaying && state.currentlyPlaying.is_playing}/>
-      <div className='current-device'>
-        { currentDevice ? <span><b>{currentDevice.name}</b></span>: '' }
-      </div>
+        <PlayerActions isPlaying={state.currentlyPlaying && state.currentlyPlaying.is_playing}/>
+        <DeviceList/>
     </div>
   );
 }
