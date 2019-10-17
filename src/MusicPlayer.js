@@ -67,7 +67,7 @@ function MusicPlayer(props) {
        {currentlyPlaying ?
          <React.Fragment>
            <div className='currently-playing-image'>
-           <img src={currentlyPlaying.album.images[0].url} alt='currently playing'className='player-image'/>
+             <img src={currentlyPlaying.album.images[0].url} alt='currently playing'className='player-image'/>
            </div>
            <div className='currently-playing-info'>
              <div><b>{currentlyPlaying.name}</b></div>
