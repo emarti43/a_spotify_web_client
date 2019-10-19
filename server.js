@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 const request = require('request');
-
 const cors = require('cors');
 const querystring = require('query-string');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const clientId = process.env.SPOTIFY_CLIENT_ID;
-let redirectURI = 'http://localhost:8080/callback';
+let redirectURI = process.env.SPOTIFY_CALLBACK;
 
 
 /**
