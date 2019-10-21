@@ -1,5 +1,5 @@
 # a_spotify_web_client
-Desktop UI for spotify (work in progress)
+Desktop UI for spotify (work in progress). (Current website can be found [Here](https://my-spotify-web-client.herokuapp.com))
 ## Installing on Local Machine
 * you must install  node `12.8.0` (the one with hooks, also specified in `.nvmrc`)
 * install the packages (`yarn install` or `npm install`)
