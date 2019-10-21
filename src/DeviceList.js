@@ -18,11 +18,13 @@ export default function DeviceList(){
 
   return(
     <div className='current-device'>
-      <b>{ currentDevice ? currentDevice.name : '' }</b>
-      <img onClick={() => toggleDevices(!showDevices)}className='airplay-icon' alt='devices'src={airplayImg}/>
-      {showDevices ? <div>
-        {devices ? devices.filter(device => !device.is_active).map( (device, i)  => <div key={i} > {device.name} </div>):'No devices to play from'}
+      {showDevices ? <div className='device-list'> <b>Devices</b>
+        {devices ? devices.map( (device, i)  => <div key={i} > {device.is_active ?  <b> {device.name}</b> : device.name } </div>):'No devices to play from'}
       </div> : ''
       }
+      <div>
+        <b>{ currentDevice ? currentDevice.name : '' }</b>
+        <img onClick={() => toggleDevices(!showDevices)}className='airplay-icon' alt='devices'src={airplayImg}/>
+      </div>
     </div>);
 }

@@ -1,7 +1,6 @@
 .music-player {
   margin: auto;
   position: absolute;
-  overflow: hidden;
   display: grid;
   bottom: 0;
   height: 13vh;
@@ -53,6 +52,15 @@
 
 .airplay-icon {
   width: 25px;
+}
+
+.device-list {
+  background-color: #1c2120;
+  border-radius: 5px;
+  color: grey;
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
 }
 
 @media (max-width: 978px) and (min-width: 842px) {
