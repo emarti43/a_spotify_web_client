@@ -15,7 +15,6 @@
 .player-actions {
   text-align: center;
   width: 100%;
-  margin: auto;
 }
 
 .currently-playing {
@@ -63,7 +62,7 @@
   padding: 5px;
 }
 
-@media (max-width: 978px) and (min-width: 842px) {
+@media (max-width: 978px) and (max-width: 842px) {
   .currently-playing {
     color: white;
     float: left;
@@ -76,9 +75,9 @@
 
 }
 
-@media(max-width: 842px) and (min-width: 401px) {
+@media(max-width: 842px) and (max-width: 401px) {
   .currently-playing {
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 100%;
   }
 }
 
@@ -100,6 +99,7 @@
   }
   .currently-playing-info {
     padding: 0;
+    font-size: 0.8em;
   }
   .current-device {
     font-size: 0.8em;

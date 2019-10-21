@@ -27,18 +27,18 @@
 
 .playlist-header:hover {
   background-color: #3d3a37;
+  border-radius: 0 0 5px 5px;
 }
 
 .Playlist-image-container {
   float: left;
-  width:100%;
-  margin: 5px;
+  width: 100%;
   background-image: url('./assets/placeholder-art-icon.png')
 }
 
 .Playlist-image {
   width: 100%;
-  margin: 1px;
+  margin: auto;
   float: left;
 }
 
@@ -74,6 +74,7 @@
   overflow: hidden;
   transition: background-color 0.2s;
   padding: 10px;
+  cursor: pointer;
 }
 
 .track-container:hover {
