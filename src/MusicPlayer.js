@@ -12,15 +12,16 @@ import DeviceList from './DeviceList'
 function MusicPlayer(props) {
   const { state, dispatch } = useContext(UserContext);
   const currentlyPlaying = state.currentlyPlaying ? state.currentlyPlaying.item : undefined;
+  const urlParams = new URLSearchParams(window.location.search);
 
   useEffect( () => {
     setCurrentlyPlaying(dispatch);
   }, []);
 
-  const renderAction = (image, alt, clickAction) => <button className='action-button' onClick={clickAction} ><img src={image} alt={alt}/></button>;
+  const renderAction = (image, alt, clickAction, actionType) =>
+  <button className='action-button' onClick={() => clickAction(actionType)} ><img src={image} alt={alt}/></button>;
 
-  const  toggleState = async () =>  {
-    const urlParams = new URLSearchParams(window.location.search);
+  const togglePlayState = async () =>  {
     let endpoint = '/me/player/play';
     if (state.currentlyPlaying.is_playing) endpoint = '/me/player/pause';
     try {
@@ -31,23 +32,17 @@ function MusicPlayer(props) {
     setCurrentlyPlaying(dispatch);
   }
 
-  const skipTrack  = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    await genericRequest('post', '/me/player/next', urlParams.get('access_token'));
+  const changeTrack = async (action) => {
+    await genericRequest('post', '/me/player/' + action, urlParams.get('access_token'));
     setCurrentlyPlaying(dispatch);
   }
 
-  const prevTrack = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    await genericRequest('post', '/me/player/previous', urlParams.get('access_token'));
-    setCurrentlyPlaying(dispatch);
-  }
   const PlayerActions = ({isPlaying}) => {
-    const playAction = isPlaying ? renderAction(pauseButton, 'pause', toggleState) : renderAction(playButton, 'play', toggleState);
+    const playAction = isPlaying ? renderAction(pauseButton, 'pause', togglePlayState) : renderAction(playButton, 'play', togglePlayState);
     return <div className='player-actions'>
-      {renderAction(prevButton, 'skip to previous', prevTrack)}
+      {renderAction(prevButton, 'previous track', changeTrack, 'previous')}
       {playAction}
-      {renderAction(skipButton, 'skip', skipTrack)}
+      {renderAction(skipButton, 'next track', changeTrack, 'next')}
     </div>
   }
 

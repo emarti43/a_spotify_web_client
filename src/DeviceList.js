@@ -23,7 +23,7 @@ export default function DeviceList(){
       </div> : ''
       }
       <div>
-        <b>{ currentDevice ? currentDevice.name : '' }</b>
+        <b>{ currentDevice ? currentDevice.name : 'No Devices Available' }</b>
         <img onClick={() => toggleDevices(!showDevices)}className='airplay-icon' alt='devices'src={airplayImg}/>
       </div>
     </div>);
