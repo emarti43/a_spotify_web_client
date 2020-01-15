@@ -19,6 +19,7 @@
   overflow: hidden;
   transition: background-color 0.5s;
 }
+
 .play-button {
   padding-top: 10px;
   width: 15px;
@@ -27,13 +28,12 @@
 
 .playlist-header:hover {
   background-color: #3d3a37;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .Playlist-image-container {
   float: left;
   width: 100%;
-  background-image: url('./assets/placeholder-art-icon.png')
 }
 
 .Playlist-image {

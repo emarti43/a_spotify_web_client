@@ -3,8 +3,9 @@ import Track from './Track';
 import './PlaylistDetails.css';
 import {default as UserContext} from './Contexts/UserContext';
 import { popPlaylist } from './Contexts/UserActions';
-import RecentlyPlayed from './RecentlyPlayed'
-import closeIcon from './assets/close-icon.png'
+import RecentlyPlayed from './RecentlyPlayed';
+import closeIcon from './assets/close-icon.png';
+import placeholderArt from './assets/placeholder-art-icon.png';
 
 function PlaylistDetails() {
   let {state, dispatch } = useContext(UserContext);
@@ -20,7 +21,7 @@ function PlaylistDetails() {
         <span onClick={ () => popPlaylist({}, dispatch) }> <img src={closeIcon} className="icon" alt="close"/></span>
         <div className="details-header">
           <div className="details-image-container">
-            <img className="details-image" src={currentPlaylist.images[0].url || "null"} alt={`playlist for ${currentPlaylist.name}`}/>
+            <img className="details-image" src={currentPlaylist.images[0] ? currentPlaylist.images[0].url : placeholderArt} alt={`playlist for ${currentPlaylist.name}`}/>
           </div>
           <div className="Playlist-description" style={{float: 'none'}}>
             <h3> {currentPlaylist.name} </h3>
