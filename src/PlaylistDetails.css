@@ -1,11 +1,10 @@
 .details-container {
-  position: absolute;
-  overflow: auto;
-  right:0;
-  width: 25%;
-  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  width: 25vw;
   background-color: #1c2120;
-  height: 88vh;
+  height: 87vh;
 }
 
 .icon {

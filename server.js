@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const clientId = process.env.SPOTIFY_CLIENT_ID;
-let redirectURI = process.env.SPOTIFY_CALLBACK;
+const redirectURI = process.env.SPOTIFY_CALLBACK;
 
 
 /**

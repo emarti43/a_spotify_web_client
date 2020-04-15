@@ -8,8 +8,8 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  float:left;
-  width: 100vw;
+  max-width: 100vw;
+  overflow:hidden
 }
 
 .container {
@@ -17,11 +17,14 @@
   background: rgba(0, 0, 0, .6);
 }
 
+.flex {
+  display: flex;  
+}
 .main-body {
   background: rgba(0, 0, 0, .6);
   float: left;
-  width: 75%;
-  height: 90vh;
+  height: 87vh;
+  width: 75vw;
   overflow: auto;
 }
 
@@ -60,8 +63,6 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: black;
-
 }
 
 h2,

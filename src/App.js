@@ -76,15 +76,13 @@ export default function App() {
   return (
     <UserContext.Provider value={{state, dispatch}}>
       <div className="App">
-        <div className={userInfo ? "main-body": 'main-login'}>
-          {content}
+        <div className="flex">
+          <div className={userInfo ? "main-body": 'main-login'}>
+            {content}
+          </div>
+          { userInfo ? <PlaylistDetails/> : ''}
         </div>
-        {userInfo ?
-        <React.Fragment>
-          <MusicPlayer/>
-          <PlaylistDetails/>
-        </React.Fragment>
-        : ''}
+        {userInfo ? <MusicPlayer/> : ''}
       </div>
     </UserContext.Provider>
   );

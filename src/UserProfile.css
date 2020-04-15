@@ -7,11 +7,9 @@
 
 .UserProfile-image-container {
   width: 25%;
-  float: left;
 }
 
 .UserProfile-content {
-  float: left;
   overflow: auto;
 }
 
