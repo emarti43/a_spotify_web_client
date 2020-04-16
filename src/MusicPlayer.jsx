@@ -1,11 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import './MusicPlayer.css';
 import genericRequest from './ApiRequests';
-import playButton from './assets/play-button.png';
-import prevButton from './assets/prev-button.png';
-import pauseButton from './assets/pause-button.png';
-import skipButton from './assets/skip-button.png';
-import repeatButton from './assets/repeat-button.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faPause, faStepForward, faStepBackward, faRedo} from '@fortawesome/free-solid-svg-icons';
 
 import { default as UserContext } from './Contexts/UserContext';
 import { setCurrentlyPlaying } from './Contexts/UserActions';
@@ -19,8 +16,8 @@ function MusicPlayer(props) {
     setCurrentlyPlaying(dispatch);
   }, []);
 
-  const renderAction = (image, alt, clickAction, actionType) =>
-  <button className='action-button' onClick={() => clickAction(actionType)} ><img src={image} alt={alt}/></button>;
+  const renderAction = (icon, clickAction, actionType) =>
+  <button className='action-button' onClick={() => clickAction(actionType)} ><FontAwesomeIcon color="white" size="lg"icon={icon}></FontAwesomeIcon></button>;
 
   const togglePlayState = async () =>  {
     let endpoint = '/me/player/play';
@@ -44,12 +41,12 @@ function MusicPlayer(props) {
   }
 
   const PlayerActions = ({isPlaying}) => {
-    const playAction = isPlaying ? renderAction(pauseButton, 'pause', togglePlayState) : renderAction(playButton, 'play', togglePlayState);
+    const playAction = isPlaying ? renderAction(faPause, togglePlayState) : renderAction(faPlay, togglePlayState);
     return <div className='player-actions'>
-      {renderAction(repeatButton, 'change repeat state', toggleRepeat)}
-      {renderAction(prevButton, 'previous track', changeTrack, 'previous')}
+      {renderAction(faRedo, toggleRepeat)}
+      {renderAction(faStepBackward, changeTrack, 'previous')}
       {playAction}
-      {renderAction(skipButton, 'next track', changeTrack, 'next')}
+      {renderAction(faStepForward, changeTrack, 'next')}
       
     </div>
   }
